@@ -83,19 +83,19 @@ func getElfStats(elfCalories [][]int) []*ElfStat {
 	return elfStats
 }
 
-func findTopElfsWithCalories(elfStats []*ElfStat, n int) ([]*ElfStat, int, error) {
+func findTopElvesWithCalories(elfStats []*ElfStat, n int) ([]*ElfStat, int, error) {
 	if n > len(elfStats) {
 		return nil, 0, fmt.Errorf("n is greater than the number of elves")
 	}
 
-	topElfs := elfStats[:n]
 	var total int
+	topElves := elfStats[:n]
 
-	for _, elf := range topElfs {
+	for _, elf := range topElves {
 		total += elf.calories
 	}
 
-	return topElfs, total, nil
+	return topElves, total, nil
 }
 
 func main() {
@@ -111,7 +111,7 @@ func main() {
 
 	elfStats := getElfStats(elfCalories)
 
-	_, total, err := findTopElfsWithCalories(elfStats, 3)
+	_, total, err := findTopElvesWithCalories(elfStats, 3)
 	if err != nil {
 		log.Panicf("Error finding top elves: %v", err)
 	}
